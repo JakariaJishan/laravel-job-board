@@ -19,7 +19,7 @@ class JobBoardFactory extends Factory
     {
         return [
             'title'=>fake()->jobTitle,
-            'description'=>fake()->sentences(3, true),
+            'description'=>fake()->sentences(7, true),
             'salary'=>fake()->numberBetween(5_000, 150_000),
             'location'=>fake()->city,
             'category'=>fake()->randomElement(JobBoard::$category),
