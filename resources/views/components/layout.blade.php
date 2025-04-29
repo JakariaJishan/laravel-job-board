@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 
     </head>
-    <body class="bg-slate-200 max-w-3xl mx-auto w-[90%] my-10">
+    <body class="bg-slate-200 max-w-3xl mx-auto w-[90%] my-10 ">
         {{$slot}}
     </body>
 </html>
