@@ -8,3 +8,7 @@ Route::get('', fn()=>to_route('jobs.index'));
 Route::get('/login', fn()=>to_route('auth.create'))->name('login');
 Route::resource('jobs', JobBoardController::class);
 Route::resource('auth', AuthController::class);
+
+Route::middleware('auth')->group(function (){
+    Route::resource('jobs.application', \App\Http\Controllers\JobApplicationController::class);
+});
