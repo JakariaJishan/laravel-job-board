@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobBoard extends Model
 {
@@ -16,6 +17,11 @@ class JobBoard extends Model
     public function employer():BelongsTo
     {
         return $this->belongsTo(Employer::class);
+    }
+
+    public function job_applications():HasMany
+    {
+        return $this->hasMany(JobApplication::class);
     }
 
     public function scopeFilter(Builder $query, $filters)

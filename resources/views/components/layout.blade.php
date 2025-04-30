@@ -13,6 +13,31 @@
 
     </head>
     <body class="bg-slate-200 max-w-3xl mx-auto w-[90%] my-10 ">
+    <nav class="flex justify-between items-center font-2xl font-bold mb-8">
+        <ul>
+            <li>
+                <a href="{{route('jobs.index')}}">Home</a>
+            </li>
+        </ul>
+        <ul class="flex space-x-3">
+            @auth
+                <li>
+                    {{auth()->user()->name}}
+                </li>
+                <li>
+                    <form action="{{route('auth.destroy', auth()->user())}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button>Logout</button>
+                    </form>
+                </li>
+            @else
+                <li>
+                    <a href="{{route('auth.create')}}">Login</a>
+                </li>
+            @endauth
+        </ul>
+    </nav>
         {{$slot}}
     </body>
 </html>

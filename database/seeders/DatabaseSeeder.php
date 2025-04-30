@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employer;
+use App\Models\JobApplication;
 use App\Models\JobBoard;
 use App\Models\User;
 
@@ -16,6 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->create([
+            'name'=>'jakaria jishan',
+            'email'=>'jakaria@jishan.com',
+        ]);
+
         User::factory(300)->create();
         $users = User::all()->shuffle();
 
@@ -31,6 +37,16 @@ class DatabaseSeeder extends Seeder
             JobBoard::factory()->create([
                 'employer_id' => $employers->random()
             ]);
+        }
+
+        foreach ($users as $user) {
+            $jobs = JobBoard::inRandomOrder()->take(rand(0,4))->get();
+            foreach ($jobs as $job) {
+                JobApplication::factory()->create([
+                    'user_id'=>$user->id,
+                    'job_board_id'=>$job->id
+                ]);
+            }
         }
     }
 }
