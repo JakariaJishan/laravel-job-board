@@ -24,7 +24,7 @@
                     <x-radio-group name="category" :options="\App\Models\JobBoard::$category"/>
                 </div>
             </div>
-            <button type="submit">Filter</button>
+            <button type="submit" class="w-full text-center bg-slate-100 border shadow border-slate-300 py-1 font-bold rounded-md hover:bg-slate-200 cursor-pointer focus:bg-slate-400">Filter</button>
         </form>
     </x-card>
 
