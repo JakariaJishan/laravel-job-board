@@ -13,7 +13,7 @@ class JobApplication extends Model
 
     protected $fillable = ['expected_salary','user_id','job_id'];
 
-    public function job():BelongsTo
+    public function job_board():BelongsTo
     {
         return $this->belongsTo(JobBoard::class);
     }

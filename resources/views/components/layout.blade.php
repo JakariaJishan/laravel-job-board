@@ -22,7 +22,9 @@
         <ul class="flex space-x-3">
             @auth
                 <li>
-                    {{auth()->user()->name}}
+                    <a href="{{route('my-job-applications.index')}}">
+                        {{auth()->user()->name}} Applications
+                    </a>
                 </li>
                 <li>
                     <form action="{{route('auth.destroy', auth()->user())}}" method="POST">

@@ -5,7 +5,11 @@
             {!! nl2br(e($job->description)) !!}
         </p>
 
-        <a href="{{route('jobs.application.create', $job)}}" class="bg-black text-white px-3 py-1.5 font-bold  rounded-md shadow">Apply</a>
+        @can('apply', $job)
+            <a href="{{route('jobs.application.create', $job)}}" class="bg-black text-white px-3 py-1.5 font-bold  rounded-md shadow">Apply</a>
+        @else
+            <p class="text-center text-md text-slate-500 font-medium">You already applied to this job</p>
+        @endcan
     </x-job-board>
 
     <x-card class="mb-4">
