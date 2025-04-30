@@ -12,9 +12,9 @@ class JobBoardController extends Controller
      */
     public function index()
     {
-        $filters = request()->only('search', 'min_salary', 'max_salary', 'experience','category');
+        $filters = request()->only('search', 'min_salary', 'max_salary', 'experience', 'category');
 
-        return view('jobs.index', ['jobs' => JobBoard::filter($filters)->get()]);
+        return view('jobs.index', ['jobs' => JobBoard::with('employer')->filter($filters)->get()]);
     }
 
     /**
@@ -36,9 +36,13 @@ class JobBoardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobBoard $job)
+    public function show(int $id)
     {
-        return view('jobs.show', ['job' => $job->load('employer')]);
+        $jobs = JobBoard::find($id)->load('employer.jobs');
+        return view(
+            'jobs.show',
+            ['job' => $jobs]
+        );
     }
 
     /**

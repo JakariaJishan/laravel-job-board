@@ -30,7 +30,7 @@
 
     @foreach($jobs as $job)
         <x-job-board class="mb-4" :$job>
-            <a href="{{route('jobs.show', $job)}}" class="border border-slate-300 shadow px-2 py-1 rounded-md hover:bg-slate-100 bg-white">
+            <a href="{{route('jobs.show', $job)}}" class="border border-slate-300 shadow px-2 py-1 rounded-md hover:bg-slate-100 bg-white font-semibold text-sm">
                 See More
             </a>
         </x-job-board>

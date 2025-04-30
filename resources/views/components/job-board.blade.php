@@ -3,7 +3,6 @@
         <h2 class="text-xl font-bold">{{$job->title}}</h2>
         <p class="font-semibold">$ {{number_format($job->salary)}}</p>
     </div>
-
     <div class="flex justify-between items-center mb-4">
         <div class="flex items-center space-x-2 font-semibold text-slate-500">
             <div>{{$job->employer->company_name}}</div>
@@ -15,8 +14,5 @@
         </div>
     </div>
 
-    <p class="text-sm text-slate-500 mb-4">
-        {!! nl2br(e($job->description)) !!}
-    </p>
     {{$slot}}
 </article>
