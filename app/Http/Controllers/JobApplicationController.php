@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobBoard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JobApplicationController extends Controller
 {
@@ -18,10 +19,10 @@ class JobApplicationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(string $id)
+    public function create(JobBoard $job)
     {
-
-        return view('job_application.create', ['job'=>JobBoard::find($id)]);
+        Gate::authorize('apply', $job);
+        return view('job_application.create', ['job'=>$job]);
     }
 
     /**

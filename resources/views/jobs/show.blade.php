@@ -4,6 +4,8 @@
         <p class="text-sm text-slate-500 mb-4">
             {!! nl2br(e($job->description)) !!}
         </p>
+
+        <a href="{{route('jobs.application.create', $job)}}" class="bg-black text-white px-3 py-1.5 font-bold  rounded-md shadow">Apply</a>
     </x-job-board>
 
     <x-card class="mb-4">
