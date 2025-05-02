@@ -1,7 +1,7 @@
 <x-layout>
     <x-breadcumbs :links="['Jobs' => route('jobs.index')]" class="mb-4"/>
 
-    <x-card class="mb-4 text-sm">
+    <x-card class="mb-4 text-sm !bg-[#313131] text-white">
         <form action="{{route('jobs.index')}}" method="GET" id="filtering-form">
             <div class="mb-4 grid grid-cols-2 gap-4">
                 <div>
@@ -24,7 +24,7 @@
                     <x-radio-group name="category" :options="\App\Models\JobBoard::$category"/>
                 </div>
             </div>
-            <button type="submit" class="w-full text-center bg-slate-100 border shadow border-slate-300 py-1 font-bold rounded-md hover:bg-slate-200 cursor-pointer focus:bg-slate-400">Filter</button>
+            <button type="submit" class="w-full text-center text-black bg-slate-100 border shadow border-slate-300 py-1 font-bold rounded-md hover:bg-slate-200 cursor-pointer focus:bg-slate-400">Filter</button>
         </form>
     </x-card>
 

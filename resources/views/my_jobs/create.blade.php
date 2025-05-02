@@ -20,7 +20,7 @@
 
         <div class="mb-4 col-span-2">
           <label for="description" class="mb-2 block text-sm font-medium text-slate-900">Description</label>
-          <x-text-input type="textarea" name="description" />
+          <textarea name="description" class="w-full ring-1 ring-slate-300 rounded-md p-2" ></textarea>
         </div>
 
         <div>

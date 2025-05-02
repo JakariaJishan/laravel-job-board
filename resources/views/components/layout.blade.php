@@ -19,26 +19,27 @@
             <a href="{{route('jobs.index')}}">Home</a>
         </li>
     </ul>
-    <ul class="flex space-x-3">
+    <ul class="flex items-center space-x-6">
         @auth
             <li>
                 <a href="{{route('my-job-applications.index')}}">
-                    {{auth()->user()->name}} Applications
+                    My Applications
                 </a>
             </li>
         <li>
             <a href="{{route('my-jobs.index')}}">My Jobs</a>
         </li>
-            <li>
+            <li class="flex space-x-2 items-center">
+                <div>{{ auth()->user()->name }}</div>
                 <form action="{{route('auth.destroy', auth()->user())}}" method="POST">
                     @csrf
                     @method('delete')
-                    <button>Logout</button>
+                    <button class=" bg-black px-2 py-1 rounded-md shadow  text-white">Logout</button>
                 </form>
             </li>
         @else
             <li>
-                <a href="{{route('auth.create')}}">Login</a>
+                <a href="{{route('auth.create')}}" class=" bg-black px-2 py-1 rounded-md shadow  text-white">Login</a>
             </li>
         @endauth
     </ul>

@@ -17,7 +17,7 @@
             {{$job->employer->company_name}} Jobs
         </div>
 
-        @foreach($job->employer->jobs as $otherJob)
+        @foreach($job->employer->jobBoards as $otherJob)
             <a href="{{route('jobs.show', $otherJob)}}" class="flex justify-between items-center mb-4">
                 <div>
                     <p class="font-semibold">{{$otherJob->title}}</p>

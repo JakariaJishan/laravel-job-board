@@ -38,7 +38,7 @@ class JobBoardController extends Controller
      */
     public function show(int $id)
     {
-        $jobs = JobBoard::find($id)->load('employer.jobs');
+        $jobs = JobBoard::find($id)->load('employer.jobBoards');
         return view(
             'jobs.show',
             ['job' => $jobs]
