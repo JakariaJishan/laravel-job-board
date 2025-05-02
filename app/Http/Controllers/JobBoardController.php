@@ -14,7 +14,7 @@ class JobBoardController extends Controller
     {
         $filters = request()->only('search', 'min_salary', 'max_salary', 'experience', 'category');
 
-        return view('jobs.index', ['jobs' => JobBoard::with('employer')->filter($filters)->get()]);
+        return view('jobs.index', ['jobs' => JobBoard::with('employer')->filter($filters)->paginate()]);
     }
 
     /**

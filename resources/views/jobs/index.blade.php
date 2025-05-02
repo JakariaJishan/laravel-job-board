@@ -35,4 +35,8 @@
             </a>
         </x-job-board>
     @endforeach
+
+    @if ($jobs->count())
+        {{ $jobs->links() }}
+    @endif
 </x-layout>
