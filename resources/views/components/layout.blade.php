@@ -39,7 +39,7 @@
             </li>
         @else
             <li>
-                <a href="{{route('auth.create')}}" class=" bg-black px-2 py-1 rounded-md shadow  text-white">Login</a>
+                <a href="{{route('auth.create')}}" class=" bg-black inline-block px-2 py-1 rounded-md shadow  text-white">Login</a>
             </li>
         @endauth
     </ul>

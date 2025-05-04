@@ -2,22 +2,18 @@
     <div class="text-center mb-12">
         <h1 class="text-4xl font-bold text-slate-500">Sign in to your account</h1>
     </div>
-    <div>
-        try: <br>
-        email->jakaria@jishan.com <br>
-        password->password
-    </div>
+    
     <x-card class="px-12 py-8">
         <form action="{{route('auth.store')}}" method="POST">
             @csrf
 
             <div class="mb-8">
                 <label for="email" class="font-medium mb-2 block">E-mail</label>
-                <x-text-input type="email" name="email" />
+                <x-text-input type="email" name="email" value="jakaria@jishan.com"/>
             </div>
             <div class="mb-8">
                 <label for="password" class="font-medium mb-2 block">Password</label>
-                <x-text-input type="password" name="password" />
+                <x-text-input type="password" name="password" value="password"/>
             </div>
 
             <div class="mb-8 flex items-center justify-between">
