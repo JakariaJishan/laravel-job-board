@@ -6,6 +6,9 @@ composer install --no-dev --working-dir=/var/www/html
 composer update --no-dev --working-dir=/var/www/html
 
 echo "Installing npm packages..."
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+    apt-get install -y nodejs
+
 npm install --prefix /var/www/html
 npm run build -- --manifest --prefix /var/www/html
 npm install --save-dev vite laravel-vite-plugin
