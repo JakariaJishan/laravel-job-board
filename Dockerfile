@@ -2,22 +2,6 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
-# Install dependencies
-RUN apk add --no-cache \
-    bash \
-    curl \
-    git \
-    zip \
-    unzip \
-    nodejs \
-    npm \
-    libzip-dev \
-    oniguruma-dev \
-    postgresql-dev
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql mbstring zip
-
 # Build frontend assets with Vite
 RUN npm install && npm run build
 
