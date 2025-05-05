@@ -17,36 +17,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $users = User::factory(10)->create();
+
         User::factory()->create([
-            'name'=>'jakaria jishan',
-            'email'=>'jakaria@jishan.com',
+            'name' => 'jakaria jishan',
+            'email' => 'jakaria@jishan.com',
         ]);
 
-        User::factory(10)->create();
-        $users = User::all()->shuffle();
+        $employers = Employer::factory(20)->create([
+            'user_id' => fn() => $users->random()->id,
+        ]);
 
-        for ($i = 0; $i < 20; $i++) {
-            Employer::factory()->create([
-                'user_id' => $users->pop()->id
-            ]);
-        }
+        $jobBoards = JobBoard::factory(100)->create([
+            'employer_id' => fn() => $employers->random()->id,
+        ]);
 
-        $employers = Employer::all();
-
-        for ($i = 0; $i < 100; $i++) {
-            JobBoard::factory()->create([
-                'employer_id' => $employers->random()
-            ]);
-        }
-
-        foreach ($users as $user) {
-            $jobs = JobBoard::inRandomOrder()->take(rand(0,4))->get();
+        $users->each(function ($user) use ($jobBoards) {
+            $jobs = $jobBoards->random(rand(0, 4));
             foreach ($jobs as $job) {
                 JobApplication::factory()->create([
-                    'user_id'=>$user->id,
-                    'job_board_id'=>$job->id
+                    'user_id' => $user->id,
+                    'job_board_id' => $job->id
                 ]);
             }
-        }
+        });
     }
 }
