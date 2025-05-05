@@ -2,6 +2,14 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
+RUN echo "Installing npm packages..." && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install --prefix /var/www/html && \
+    npm run build -- --manifest --prefix /var/www/html && \
+    npm install --save-dev vite laravel-vite-plugin && \
+    npm install --save-dev @vitejs/plugin-vue
+    
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
