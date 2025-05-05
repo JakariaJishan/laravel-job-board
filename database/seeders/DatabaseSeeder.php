@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email'=>'jakaria@jishan.com',
         ]);
 
-        User::factory(20)->create();
+        User::factory(10)->create();
         $users = User::all()->shuffle();
 
         for ($i = 0; $i < 20; $i++) {
