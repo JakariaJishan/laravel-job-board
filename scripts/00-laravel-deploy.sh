@@ -19,6 +19,7 @@ echo "Wiping database..."
 php artisan db:wipe --force
 
 echo "Running migrations..."
+php artisan session:table --force
 php artisan migrate --force
 
 echo "Seeding database..."
