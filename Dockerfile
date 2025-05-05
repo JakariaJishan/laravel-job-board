@@ -17,4 +17,6 @@ FROM richarvey/nginx-php-fpm:1.7.2
  # Allow composer to run as root
  ENV COMPOSER_ALLOW_SUPERUSER 1
  
- CMD ["/scripts/00-laravel-deploy.sh"]
+ COPY scripts/00-laravel-deploy.sh /scripts/00-laravel-deploy.sh
+ RUN chmod +x /scripts/00-laravel-deploy.sh
+ 
