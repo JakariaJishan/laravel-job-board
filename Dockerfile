@@ -23,6 +23,8 @@ COPY . .
 RUN composer install --optimize-autoloader
 
 RUN npm install && npm run build
+RUN php artisan storage:link
+RUN npm run build
 
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www
