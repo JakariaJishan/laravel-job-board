@@ -2,14 +2,25 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
-RUN echo "Installing npm packages..." && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install --prefix /var/www/html && \
-    npm run build -- --manifest --prefix /var/www/html && \
-    npm install --save-dev vite laravel-vite-plugin && \
-    npm install --save-dev @vitejs/plugin-vue
-    
+# Install dependencies
+RUN apk add --no-cache \
+    bash \
+    curl \
+    git \
+    zip \
+    unzip \
+    nodejs \
+    npm \
+    libzip-dev \
+    oniguruma-dev \
+    postgresql-dev
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo pdo_pgsql mbstring zip
+
+# Build frontend assets with Vite
+RUN npm install && npm run build
+
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
