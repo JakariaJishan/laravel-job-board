@@ -17,4 +17,4 @@ FROM richarvey/nginx-php-fpm:1.7.2
  # Allow composer to run as root
  ENV COMPOSER_ALLOW_SUPERUSER 1
  
- CMD ["/start.sh"]
+ CMD ["/scripts/00-larave-deploy.sh"]
