@@ -20,9 +20,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 COPY . .
 
-RUN composer require fakerphp/faker --dev
-
-RUN composer install --optimize-autoloader --no-dev
+RUN composer install --optimize-autoloader
 
 RUN npm install && npm run build
 
