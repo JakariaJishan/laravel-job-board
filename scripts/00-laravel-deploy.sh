@@ -18,7 +18,7 @@ php artisan config:cache
 echo "Caching routes..."
 php artisan route:cache
 
-echo "wiping database..."
+echo "Wiping database..."
 php artisan db:wipe --force
 
 echo "Running migrations..."
@@ -26,3 +26,6 @@ php artisan migrate --force
 
 echo "Seeding database..."
 php artisan db:seed --force
+
+echo "Starting Laravel server..."
+php artisan serve --host=0.0.0.0 --port=8000
